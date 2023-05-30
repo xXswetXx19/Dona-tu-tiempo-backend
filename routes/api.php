@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:sanctum')->get('/users', [App\Http\Controllers\ApiController::class, 'users']);
+
+
+Route::get('/token_error', function () {
+    return response()->json(['error' => 'Token Invalido'], 401);
+})->name('token_error');
+
+
+// Route::get('/users', [App\Http\Controllers\ApiController::class, 'users']);
+
+Route::post('/login', [App\Http\Controllers\ApiController::class, 'login']);
+
+Route::post('/register', [App\Http\Controllers\ApiController::class, 'register']);
