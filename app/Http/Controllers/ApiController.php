@@ -83,7 +83,7 @@ class ApiController extends Controller
         ]);
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        $userdata = Userdata::create([
+        Userdata::create([
             'cedula' => $cedula,
             'name' => $nombre,
             'email' => $email,
